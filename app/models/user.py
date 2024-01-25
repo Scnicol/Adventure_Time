@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
 
     adventures = db.relationship('Adventure', foreign_keys='Adventure.creatorId', back_populates='creator', cascade='all, delete-orphan')
 
+    uid1 = db.relationship('Friend', foreign_keys="Friend.uid1", back_populates="uidf1", cascade='all, delete-orphan')
+    uid2 = db.relationship('Friend', foreign_keys="Friend.uid2", back_populates="uidf2", cascade='all, delete-orphan')
 
   # Methods _________________________
 
