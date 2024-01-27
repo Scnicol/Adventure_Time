@@ -25,6 +25,6 @@ class Friend(db.Model, UserMixin):
         return {
             'id': self.id,
             'status': self.status,
-            'challengerId': self.currUserId,
-            'challengedId': self.friendId
+            'uid1': self.currUserId,
+            'uid2': self.friendId
         }
