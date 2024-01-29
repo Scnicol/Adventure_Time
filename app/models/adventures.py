@@ -20,6 +20,7 @@ class Adventure(db.Model, UserMixin):
     creator = db.relationship('User', foreign_keys='Adventure.creatorId', back_populates='adventures')
 
     foodChoices = db.relationship('Food', foreign_keys='Food.adventureId', back_populates='adventures' )
+    directionChoices = db.relationship('Direction', foreign_keys='Direction.adventureId', back_populates='adventures' )
     # Methods _________________________
 
     def to_dict(self):
