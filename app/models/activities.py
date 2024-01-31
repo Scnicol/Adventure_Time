@@ -16,7 +16,7 @@ class Activity(db.Model, UserMixin):
 
     # Relationships _____________________
 
-    activities = db.relationship('Adventure', foreign_keys='Adventure.creatorId', back_populates='activityChoices')
+    adventure = db.relationship('Adventure', foreign_keys='Activity.adventureId', back_populates='activityChoices')
 
     # Methods _________________________
 

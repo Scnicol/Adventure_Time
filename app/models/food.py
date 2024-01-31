@@ -16,7 +16,7 @@ class Food(db.Model, UserMixin):
 
     # Relationships _____________________
 
-    food = db.relationship('Adventure', foreign_keys='Adventure.creatorId', back_populates='foodChoices')
+    adventure = db.relationship('Adventure', foreign_keys='Food.adventureId', back_populates='foodChoices')
 
     # Methods _________________________
 
