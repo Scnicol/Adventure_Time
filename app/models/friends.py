@@ -7,19 +7,20 @@ from datetime import datetime
 class Friend(db.Model, UserMixin):
     __tablename__ = 'friends'
 
+    # TODO test the constraint
+    __table_args__ = (
+        CheckConstraint('userId1 < userId2'),
+    )
+
     if environment == 'production':
-        __table_args__ = {'schema': SCHEMA}
+        __table_args__ += ({'schema': SCHEMA},)
 
     id = db.Column(db.Integer, primary_key=True)
     userId1 = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     userId2 = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
-    status = db.Column(db.Enum("request_userId1","request_userId2","friend"), nullabe=False)
+    status = db.Column(db.Enum("request_userId1","request_userId2","friend"), nullable=False)
 
-    # TODO test the constraint
-    __table_args__ = (
-        CheckConstraint('userId1 < userId2')
-    )
-    
+
     # Relationships _____________________
 
     user1 = db.relationship('User', foreign_keys='Friend.userId1', back_populates='userId1')
