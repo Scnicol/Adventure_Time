@@ -74,37 +74,37 @@ def seed_activities():
 
     activity15 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'find an arcade and play a mini game'
     )
 
     activity16 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'call a friend and ask them to give you an activity to do'
     )
 
     activity17 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'go to nearest sports store and get a ball to play with, play that sport at park'
     )
 
     activity18 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'find a game store and look for a game you can play in the car! play one game of it'
     )
 
     activity19 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'go to a clothes store and get some new hats!'
     )
 
     activity20 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'find nearest stream or creek and look for wildlife'
     )
 
     activity21 = Activity(
         adventureId = 2,
-        activity = 'find the nearest beach and jump over the waves'
+        activity = 'look for a small bakeshop to get some new exciting ingredients and make something with them when you get home!'
     )
 
     db.session.add(activity1)
