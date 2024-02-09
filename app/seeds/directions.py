@@ -4,107 +4,107 @@ from sqlalchemy.sql import text
 def seed_directions():
     direction1 = Direction(
         adventureId = 1,
-        direction = 'go for a hike at closest regional park'
+        direction = 'follow a yellow car for 2 minutes'
     )
 
     direction2 = Direction(
         adventureId = 1,
-        direction = 'pull out the basketball and shoot some hoops'
+        direction = 'follow a red car for 2 minutes'
     )
 
     direction3 = Direction(
         adventureId = 1,
-        direction = 'find the nearest beach and jump over the waves'
+        direction = 'follow a white car for 2 minutes'
     )
 
     direction4 = Direction(
         adventureId = 1,
-        direction = 'at the next stopsign or stoplight everyone get out of the car '
+        direction = 'call a friend and ask for directions for 2 minutes'
     )
 
     direction5 = Direction(
         adventureId = 1,
-        direction = 'if you pulled this choose a keyword, everyone from now on has to start their sentence with the keyword. If they dont everyone else gets a point, at the end of 10 minutes most points wins'
+        direction = 'go right 5 times and then go straight'
     )
 
     direction6 = Direction(
         adventureId = 1,
-        direction = 'stop at nearest bakery and everyone gets a sweet'
+        direction = 'go right then left then straight'
     )
 
     direction7 = Direction(
         adventureId = 1,
-        direction = 'find nearest tennis court and play around the world for 5 minutes'
+        direction = 'let the co-pilot steer the directions from their seat for 2 minutes'
     )
 
     direction8 = Direction(
         adventureId = 1,
-        direction = 'stop the car and everyone gets out and finds something red, bring them back and present yours'
+        direction = 'follow the sun for 10 minutes'
     )
 
     direction9 = Direction(
         adventureId = 1,
-        direction = 'find a chocolate store, get each a chocolate'
+        direction = 'follow the moon for 10 minutes'
     )
 
     direction10 = Direction(
         adventureId = 1,
-        direction = 'find lawn ornaments and take silly picture in front of them'
+        direction = 'roll down window and ask someone for random directions on the street'
     )
 
     direction11 = Direction(
         adventureId = 2,
-        direction = 'take off the bikes or rent some and do a short bike ride'
+        direction = 'each person in turn pick a direction at an intersection until everyone has done this once'
     )
 
     direction12 = Direction(
         adventureId = 2,
-        direction = 'find the nearest beach and jump over the waves'
+        direction = 'drive opposite the sun for 10 minutes'
     )
 
     direction13 = Direction(
         adventureId = 2,
-        direction = 'look for a local pet shop and take a peek at the inside'
+        direction = 'drive opposite the moon for 10 minutes'
     )
 
     direction14 = Direction(
         adventureId = 2,
-        direction = 'stop at the nearest park and hop on some swings'
+        direction = 'look for tallest building in the distance and try to get as close to it for 3 minutes'
     )
 
     direction15 = Direction(
         adventureId = 2,
-        direction = 'find an arcade and play a mini game'
+        direction = 'follow nearest green car'
     )
 
     direction16 = Direction(
         adventureId = 2,
-        direction = 'call a friend and ask them to give you an direction to do'
+        direction = 'call a friend and ask them to give you a directions for 2 minutes'
     )
 
     direction17 = Direction(
         adventureId = 2,
-        direction = 'go to nearest sports store and get a ball to play with, play that sport at park'
+        direction = 'make a wheel with turn left, turn right, go straight on it and spin it for each intersection for 2 minutes'
     )
 
     direction18 = Direction(
         adventureId = 2,
-        direction = 'find a game store and look for a game you can play in the car! play one game of it'
+        direction = 'for 2 minutes if you are at a stop sign go straight, if you are at a light and its red turn left, if its green is turn right'
     )
 
     direction19 = Direction(
         adventureId = 2,
-        direction = 'go to a clothes store and get some new hats!'
+        direction = 'drive straight with music that has lyrics until they sing the name of the song'
     )
 
     direction20 = Direction(
         adventureId = 2,
-        direction = 'find nearest stream or creek and look for wildlife'
+        direction = 'follow the direction the wind is blowing for two minutes'
     )
 
     direction21 = Direction(
         adventureId = 2,
-        direction = 'look for a small bakeshop to get some new exciting ingredients and make something with them when you get home!'
+        direction = 'follow your nose! wherever it goes!'
     )
 
     db.session.add(direction1)
