@@ -28,11 +28,12 @@ def seed():
         undo_friends()
         undo_users()
 
-    seed_activities()
+    seed_users()
     seed_adventures()
+    seed_activities()
     seed_directions()
     seed_friends()
-    seed_users()
+
     # Add other seed functions here
 
 
