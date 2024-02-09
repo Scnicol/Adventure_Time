@@ -131,7 +131,7 @@ def seed_activities():
 
     db.session.commit()
 
-def undo_activies():
+def undo_activities():
 
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.activities RESTART IDENTITY CASCADE;")
