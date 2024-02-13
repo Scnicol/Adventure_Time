@@ -10,7 +10,7 @@ class Picture(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     adventureId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('adventures.id')), nullable=False)
-    url = db.Column(db.String(300), nullable=False)
+    url = db.Column(db.String(300))
     isCover = db.Column(db.Boolean, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
