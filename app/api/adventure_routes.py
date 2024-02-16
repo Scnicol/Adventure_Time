@@ -68,3 +68,33 @@ def create_adventure():
     db.session.add(newAdventure)
     db.session.commit()
     return newAdventure.to_dict_full()
+
+#PUT edit an adventure by Id
+@adventure_routes.route('/<int:adventureId>', methods=['PUT'])
+@login_required
+def edit_adventure_by_id(adventureId):
+    form = CreateAdventureForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    adventure = Adventure.query.get(adventureId)
+
+    if adventure is None:
+        return {'error': 'Adventure could not be found'}, 404
+
+    if adventure.creatorId != current_user.id:
+        return {'error': 'User is not authorized'}, 401
+
+    if form.validate_on_submit() is False:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+    adventureDate = form.data['adventureDate']
+    if adventureDate < datetime.now().date():
+        return {'errors': 'Cannot schedule an adventure in the past'}, 400
+
+    adventure.name = form.data['name']
+    adventure.description = form.data['description']
+    adventure.adventureDate = form.data['adventureDate']
+
+    db.session.commit()
+
+    return adventure.to_dict_full()
