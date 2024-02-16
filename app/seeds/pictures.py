@@ -155,8 +155,8 @@ def seed_picture():
 def undo_picture():
 
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.picture RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.pictures RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM picture"))
+        db.session.execute(text("DELETE FROM pictures"))
 
     db.session.commit()

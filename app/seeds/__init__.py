@@ -6,6 +6,7 @@ from .directions import seed_directions, undo_directions
 from .food import seed_food, undo_food
 from .friends import seed_friends, undo_friends
 from .users import seed_users, undo_users
+from .pictures import seed_picture, undo_picture
 
 from app.models.db import db, environment, SCHEMA
 
@@ -29,6 +30,7 @@ def seed():
         undo_food()
         undo_friends()
         undo_users()
+        undo_picture()
 
     seed_users()
     seed_adventures()
@@ -36,6 +38,7 @@ def seed():
     seed_directions()
     seed_food()
     seed_friends()
+    seed_picture()
 
     # Add other seed functions here
 
@@ -50,4 +53,5 @@ def undo():
     undo_food()
     undo_friends()
     undo_users()
+    undo_picture()
     # Add other undo functions here
