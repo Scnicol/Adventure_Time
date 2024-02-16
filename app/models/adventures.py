@@ -12,6 +12,7 @@ class Adventure(db.Model, UserMixin):
     creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     name = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(300), nullable=False)
+    adventureDate = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -43,6 +44,7 @@ class Adventure(db.Model, UserMixin):
             'creatorId': self.creatorId,
             'name': self.name,
             'description': self.description,
+            'adventureDate': self.adventureDate,
             'createdAt': self.created_at.isoformat(),
             'updatedAt': self.updated_at.isoformat(),
         }

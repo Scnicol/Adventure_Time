@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a38ce1520397
+Revision ID: 6baabb6676f6
 Revises: 
-Create Date: 2024-02-05 12:25:57.827938
+Create Date: 2024-02-16 11:44:53.866788
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a38ce1520397'
+revision = '6baabb6676f6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,6 +33,7 @@ def upgrade():
     sa.Column('creatorId', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('description', sa.String(length=300), nullable=False),
+    sa.Column('adventureDate', sa.DateTime(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['creatorId'], ['users.id'], ),
@@ -78,7 +79,7 @@ def upgrade():
     op.create_table('pictures',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('adventureId', sa.Integer(), nullable=False),
-    sa.Column('url', sa.String(length=300), nullable=False),
+    sa.Column('url', sa.String(length=300), nullable=True),
     sa.Column('isCover', sa.Boolean(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
