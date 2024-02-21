@@ -98,3 +98,19 @@ def edit_adventure_by_id(adventureId):
     db.session.commit()
 
     return adventure.to_dict_full()
+
+#DELETE remove an adventure by adventureId
+@adventure_routes.route('/<int:adventureId>', methods=['DELETE'])
+@login_required
+def delete_adventure(adventureId):
+    adventure = Adventure.query.get(adventureId)
+
+    if adventure is None:
+        return {'error': 'Adventure could not be found'}, 404
+
+    if adventure.creatorId != current_user.id:
+        return {'error': 'User is not authorized'}, 401
+
+    db.session.delete(adventure)
+    db.session.commit()
+    return {'message': 'Adventure successfully deleted'}
