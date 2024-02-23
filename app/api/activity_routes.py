@@ -13,3 +13,5 @@ activity_routes = Blueprint('activities', __name__)
 def get_all_activities():
     activities = Activity.query.all()
     return {'activities': [activity.to_dict() for activity in activities]}
+
+
