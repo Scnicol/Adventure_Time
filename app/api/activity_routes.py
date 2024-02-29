@@ -23,3 +23,27 @@ def get_activity_byId(activityId):
         return {'error': 'activity not found'}, 404
 
     return activity.to_dict()
+
+#POST create activity
+@activity_routes.route('', methods=['POST'])
+@login_required
+def create_challenge():
+    form = ActivityForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    currentUserId = current_user.get_id()
+    user = User.query.get(currentUserId)
+
+    if user is None:
+        return {'error': 'User not found'}, 404
+
+    if form.validate_on_submit():
+
+        newActivity = Activity(
+            activity = form.data['activity']
+        )
+
+        db.session.add(newActivity)
+        db.session.commit()
+        return newActivity.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
