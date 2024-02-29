@@ -40,7 +40,8 @@ def create_challenge():
     if form.validate_on_submit():
 
         newActivity = Activity(
-            activity = form.data['activity']
+            activity = form.data['activity'],
+            adventureId = form.data['adventureId']
         )
 
         db.session.add(newActivity)
