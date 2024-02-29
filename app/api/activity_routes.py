@@ -14,4 +14,12 @@ def get_all_activities():
     activities = Activity.query.all()
     return {'activities': [activity.to_dict() for activity in activities]}
 
+#Get activity by Id
+@activity_routes.route('/<int:activityId>', methods=['GET'])
+def get_activity_byId(activityId):
+    activity = Activity.query.get(activityId)
 
+    if activity is None:
+        return {'error': 'activity not found'}, 404
+
+    return activity.to_dict()
