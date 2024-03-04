@@ -27,7 +27,7 @@ def get_activity_byId(activityId):
 #POST create activity
 @activity_routes.route('', methods=['POST'])
 @login_required
-def create_challenge():
+def create_activity():
     form = ActivityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
@@ -41,7 +41,8 @@ def create_challenge():
 
         newActivity = Activity(
             activity = form.data['activity'],
-            adventureId = form.data['adventureId']
+            adventureId = form.data['adventureId'],
+            creatorId = currentUserId
         )
 
         db.session.add(newActivity)
