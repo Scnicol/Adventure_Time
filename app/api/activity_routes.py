@@ -48,3 +48,17 @@ def create_challenge():
         db.session.commit()
         return newActivity.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+#PUT Edit an activity by Id
+@activity_routes.route('/<int:activityId>', methods=['PUT'])
+@login_required
+def update_activity_byId(activityId):
+    form = ActivityForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    activity = Activity.query.get(activityId)
+
+    if activity is None:
+        return {'error': 'Activity could not be found'}, 404
+
+    if activity.

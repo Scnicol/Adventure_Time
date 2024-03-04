@@ -10,6 +10,7 @@ class Activity(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     adventureId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('adventures.id')), nullable=False)
+    creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')), nullable=False)
     activity = db.Column(db.String(300), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
