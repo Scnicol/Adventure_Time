@@ -57,9 +57,11 @@ def update_activity_byId(activityId):
     form = ActivityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    currentUserId = current_user.get_id()
     activity = Activity.query.get(activityId)
 
     if activity is None:
         return {'error': 'Activity could not be found'}, 404
 
-    if activity.
+    if activity.creatorId != currentUserId:
+        return {'error': 'User is not authorized'}, 401
