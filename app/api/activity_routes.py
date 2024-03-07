@@ -65,3 +65,12 @@ def update_activity_byId(activityId):
 
     if activity.creatorId != currentUserId:
         return {'error': 'User is not authorized'}, 401
+
+    if form.validate_on_submit():
+
+        activity.activity = form.data['activity']
+
+        db.session.commit()
+
+        return activity.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
