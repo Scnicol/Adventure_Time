@@ -11,6 +11,7 @@ class Direction(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     adventureId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('adventures.id')), nullable=False)
     direction = db.Column(db.String(300), nullable=False)
+    creatorId = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -25,4 +26,5 @@ class Direction(db.Model, UserMixin):
             'id': self.id,
             'adventureId': self.adventureId,
             'direction': self.direction,
+            'creatorId': self.creatorId
         }
