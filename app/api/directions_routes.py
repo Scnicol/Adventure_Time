@@ -7,4 +7,10 @@ from flask_login import current_user, login_user, logout_user, login_required
 
 direction_routes = Blueprint('activities', __name__)
 
+#GET all directions
+@direction_routes.route('', methods=['GET'])
+def get_all_directions():
+    directions = Direction.query.all()
+    return {'directions': [direction.to_dict() for direction in directions]}
+
 
