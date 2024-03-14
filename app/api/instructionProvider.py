@@ -31,8 +31,7 @@ class InstructionsProvider():
         form = InstructionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
 
-        currentUserId = current_user.get_id()
-        user = User.query.get(currentUserId)
+        user = User.query.get(current_user.id)
 
         if user is None:
             return {'error': 'User not found'}, 404
@@ -43,7 +42,7 @@ class InstructionsProvider():
         newInstruction = self.classType.fromInstructions(
             instructions = form.data['instructions'],
             adventureId = form.data['adventureId'],
-            creatorId = currentUserId
+            creatorId = current_user.id
         )
 
         db.session.add(newInstruction)
@@ -56,7 +55,7 @@ class InstructionsProvider():
         form = InstructionForm()
         form['csrf_token'].data = request.cookies['csrf_token']
 
-        currentUserId = int(current_user.get_id())
+        currentUserId = current_user.id
         instruction = self.classType.query.get(instructionId)
 
         if instruction is None:
