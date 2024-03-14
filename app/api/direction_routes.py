@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Direction, User, db
-from .instruction import InstructionsProvider
+from .instructionProvider import InstructionsProvider
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from .auth_routes import validation_errors_to_error_messages
