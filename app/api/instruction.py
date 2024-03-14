@@ -74,18 +74,16 @@ class InstructionsProvider():
         return instruction.to_dict()
 
 
-    # # Delete remove an activity by activityId
-    # @activity_routes.route('/<int:activityId>', methods=['DELETE'])
-    # @login_required
-    # def delete_activity(activityId):
-    #     activity = Activity.query.get(activityId)
+    # Delete remove an activity by activityId
+    def delete(self, instructionId):
+        instruction = self.classType.query.get(instructionId)
 
-    #     if activity is None:
-    #         return {'error': 'Activity could not be found'}, 404
+        if instruction is None:
+            return {'error': f'{self.modelName} could not be found'}, 404
 
-    #     if activity.creatorId != current_user.id:
-    #         return {'error': 'User is not authorized'}, 401
+        if instruction.creatorId != current_user.id:
+            return {'error': 'User is not authorized'}, 401
 
-    #     db.session.delete(activity)
-    #     db.session.commit()
-    #     return {'message': 'Activity successfully deleted'}
+        db.session.delete(instruction)
+        db.session.commit()
+        return {'message': f'{self.modelName} successfully deleted'}

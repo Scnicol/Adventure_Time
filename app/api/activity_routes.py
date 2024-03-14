@@ -36,14 +36,4 @@ def update_activity_by_id(activityId):
 @activity_routes.route('/<int:activityId>', methods=['DELETE'])
 @login_required
 def delete_activity(activityId):
-    activity = Activity.query.get(activityId)
-
-    if activity is None:
-        return {'error': 'Activity could not be found'}, 404
-
-    if activity.creatorId != current_user.id:
-        return {'error': 'User is not authorized'}, 401
-
-    db.session.delete(activity)
-    db.session.commit()
-    return {'message': 'Activity successfully deleted'}
+    return provider.delete(activityId)
