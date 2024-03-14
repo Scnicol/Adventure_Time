@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ae959ce38da8
+Revision ID: 18c37d8a5e16
 Revises: 
-Create Date: 2024-03-13 16:22:23.361888
+Create Date: 2024-03-14 12:05:12.305576
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ae959ce38da8'
+revision = '18c37d8a5e16'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,6 +27,15 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
+    )
+    op.create_table('activities',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('creatorId', sa.Integer(), nullable=False),
+    sa.Column('activity', sa.String(length=300), nullable=False),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['creatorId'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('adventures',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -49,16 +58,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId2'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('activities',
-    sa.Column('id', sa.Integer(), nullable=False),
+    op.create_table('adventuresActivities',
+    sa.Column('activityId', sa.Integer(), nullable=False),
     sa.Column('adventureId', sa.Integer(), nullable=False),
-    sa.Column('creatorId', sa.Integer(), nullable=False),
-    sa.Column('activity', sa.String(length=300), nullable=False),
-    sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['activityId'], ['activities.id'], ),
     sa.ForeignKeyConstraint(['adventureId'], ['adventures.id'], ),
-    sa.ForeignKeyConstraint(['creatorId'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('activityId', 'adventureId')
     )
     op.create_table('directions',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -97,8 +102,9 @@ def downgrade():
     op.drop_table('pictures')
     op.drop_table('food')
     op.drop_table('directions')
-    op.drop_table('activities')
+    op.drop_table('adventuresActivities')
     op.drop_table('friends')
     op.drop_table('adventures')
+    op.drop_table('activities')
     op.drop_table('users')
     # ### end Alembic commands ###
