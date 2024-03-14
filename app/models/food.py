@@ -20,6 +20,13 @@ class Food(db.Model, UserMixin):
 
     # Methods _________________________
 
+    @classmethod
+    def fromInstructions(cls, instructions, adventureId, creatorId):
+        return cls(food=instructions, adventureId=adventureId, creatorId=creatorId)
+
+    def updateInstructions(self, instructions):
+        self.food = instructions
+
     def to_dict(self):
         return {
             'id': self.id,
