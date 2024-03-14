@@ -21,6 +21,13 @@ class Direction(db.Model, UserMixin):
 
     # Methods _________________________
 
+    @classmethod
+    def fromInstructions(cls, instructions, adventureId, creatorId):
+        return cls(direction=instructions, adventureId=adventureId, creatorId=creatorId)
+
+    def updateInstructions(self, instructions):
+        self.direction = instructions
+        
     def to_dict(self):
         return {
             'id': self.id,
