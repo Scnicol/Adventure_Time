@@ -7,12 +7,12 @@ from .auth_routes import validation_errors_to_error_messages
 from flask_login import current_user, login_user, logout_user, login_required
 
 direction_routes = Blueprint('directions', __name__)
-provider = InstructionsProvider(Direction, 'direction')
+provider = InstructionsProvider(Direction, 'direction', 'directions')
 
 #GET all directions
 @direction_routes.route('', methods=['GET'])
 def get_all_directions():
-    return provider.get_all('directions')
+    return provider.get_all()
 
 #GET direction by Id
 @direction_routes.route('/<int:directionId>', method=['GET'])

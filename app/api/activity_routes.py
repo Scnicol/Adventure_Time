@@ -8,12 +8,12 @@ from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
 
 activity_routes = Blueprint('activities', __name__)
-provider = InstructionsProvider(Activity, 'activity')
+provider = InstructionsProvider(Activity, 'activity', 'activities')
 
 #GET all activities
 @activity_routes.route('', methods=['GET'])
 def get_all_activities():
-    return provider.get_all('activities')
+    return provider.get_all()
 
 #Get activity by Id
 @activity_routes.route('/<int:activityId>', methods=['GET'])

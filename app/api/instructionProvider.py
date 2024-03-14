@@ -2,19 +2,20 @@ from flask import request
 from app.models import User, db
 from app.forms.instruction_form import InstructionForm
 from .auth_routes import validation_errors_to_error_messages
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 
 class InstructionsProvider():
-    def __init__(self, classType, modelName):
+    def __init__(self, classType, modelName, pluralModelName):
         self.classType = classType
         self.modelName = modelName
+        self.pluralModelName = pluralModelName
 
 
     #Get all
-    def get_all(self, keyName):
+    def get_all(self):
         instructions = self.classType.query.all()
-        return {keyName: [instruction.to_dict() for instruction in instructions]}
+        return {self.pluralModelName: [instruction.to_dict() for instruction in instructions]}
 
     #Get by Id
     def get_by_id(self, instructionId):
