@@ -13,7 +13,7 @@ def get_all_directions():
 
 #Get direction by Id
 @direction_routes.route('/<int:directionId>', methods=['GET'])
-def get_direction_byId(directionId):
+def get_direction_by_id(directionId):
     return provider.get_by_id(directionId)
 
 #POST create direction

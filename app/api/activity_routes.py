@@ -13,7 +13,7 @@ def get_all_activities():
 
 #Get activity by Id
 @activity_routes.route('/<int:activityId>', methods=['GET'])
-def get_activity_byId(activityId):
+def get_activity_by_id(activityId):
     return provider.get_by_id(activityId)
 
 #POST create activity
