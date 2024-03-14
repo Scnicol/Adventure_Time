@@ -20,10 +20,13 @@ class Activity(db.Model, UserMixin):
     adventure = db.relationship('Adventure', foreign_keys='Activity.adventureId', back_populates='activityChoices')
 
     # Methods _________________________
-    
+
     @classmethod
     def fromInstructions(cls, instructions, adventureId, creatorId):
         return cls(activity=instructions, adventureId=adventureId, creatorId=creatorId)
+
+    def updateInstructions(self, instructions):
+        self.activity = instructions
 
     def to_dict(self):
         return {

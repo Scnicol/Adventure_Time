@@ -29,27 +29,8 @@ def create_activity():
 #PUT Edit an activity by Id
 @activity_routes.route('/<int:activityId>', methods=['PUT'])
 @login_required
-def update_activity_byId(activityId):
-    form = ActivityForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-
-    currentUserId = current_user.get_id()
-    activity = Activity.query.get(activityId)
-
-    if activity is None:
-        return {'error': 'Activity could not be found'}, 404
-
-    if activity.creatorId != currentUserId:
-        return {'error': 'User is not authorized'}, 401
-
-    if form.validate_on_submit():
-
-        activity.activity = form.data['activity']
-
-        db.session.commit()
-
-        return activity.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+def update_activity_by_id(activityId):
+    return provider.update_by_id(activityId)
 
 # Delete remove an activity by activityId
 @activity_routes.route('/<int:activityId>', methods=['DELETE'])

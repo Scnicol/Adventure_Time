@@ -50,30 +50,29 @@ class InstructionsProvider():
         return newInstruction.to_dict()
 
 
-    # #PUT Edit an activity by Id
-    # @activity_routes.route('/<int:activityId>', methods=['PUT'])
-    # @login_required
-    # def update_activity_byId(activityId):
-    #     form = ActivityForm()
-    #     form['csrf_token'].data = request.cookies['csrf_token']
+    #PUT Edit an activity by Id
+    def update_by_id(self, instructionId):
+        form = InstructionForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
 
-    #     currentUserId = current_user.get_id()
-    #     activity = Activity.query.get(activityId)
+        currentUserId = int(current_user.get_id())
+        instruction = self.classType.query.get(instructionId)
 
-    #     if activity is None:
-    #         return {'error': 'Activity could not be found'}, 404
+        if instruction is None:
+            return {'error': f'{self.modelName} could not be found'}, 404
 
-    #     if activity.creatorId != currentUserId:
-    #         return {'error': 'User is not authorized'}, 401
+        if instruction.creatorId != currentUserId:
+            return {'error': 'User is not authorized'}, 401
 
-    #     if form.validate_on_submit():
+        if form.validate_on_submit() is False:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-    #         activity.activity = form.data['activity']
+        instruction.updateInstructions(form.data['instructions'])
 
-    #         db.session.commit()
+        db.session.commit()
 
-    #         return activity.to_dict()
-    #     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return instruction.to_dict()
+
 
     # # Delete remove an activity by activityId
     # @activity_routes.route('/<int:activityId>', methods=['DELETE'])
