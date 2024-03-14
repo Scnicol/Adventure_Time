@@ -1,10 +1,7 @@
-from flask import Blueprint, jsonify, session, request
-from app.models import Direction, User, db
+from flask import Blueprint
+from app.models import Direction
 from .instructionProvider import InstructionsProvider
-from app.forms import LoginForm
-from app.forms import SignUpForm
-from .auth_routes import validation_errors_to_error_messages
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import login_required
 
 direction_routes = Blueprint('directions', __name__)
 provider = InstructionsProvider(Direction, 'direction', 'directions')
@@ -14,12 +11,25 @@ provider = InstructionsProvider(Direction, 'direction', 'directions')
 def get_all_directions():
     return provider.get_all()
 
-#GET direction by Id
-@direction_routes.route('/<int:directionId>', method=['GET'])
-def get_direction_by_id(directionId):
-    direction = Direction.query.get(directionId)
+#Get direction by Id
+@direction_routes.route('/<int:directionId>', methods=['GET'])
+def get_direction_byId(directionId):
+    return provider.get_by_id(directionId)
 
-    if direction is None:
-        return {'error', 'direction not found'}, 401
+#POST create direction
+@direction_routes.route('', methods=['POST'])
+@login_required
+def create_direction():
+    return provider.create()
 
-    return direction.to_dict()
+#PUT Edit an direction by Id
+@direction_routes.route('/<int:directionId>', methods=['PUT'])
+@login_required
+def update_direction_by_id(directionId):
+    return provider.update_by_id(directionId)
+
+# Delete remove an direction by directionId
+@direction_routes.route('/<int:directionId>', methods=['DELETE'])
+@login_required
+def delete_direction(directionId):
+    return provider.delete(directionId)
