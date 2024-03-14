@@ -10,7 +10,7 @@ class Activity(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     adventureId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('adventures.id')), nullable=False)
-    creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')), nullable=False)
+    creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     activity = db.Column(db.String(300), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -20,6 +20,10 @@ class Activity(db.Model, UserMixin):
     adventure = db.relationship('Adventure', foreign_keys='Activity.adventureId', back_populates='activityChoices')
 
     # Methods _________________________
+    
+    @classmethod
+    def fromInstructions(cls, instructions, adventureId, creatorId):
+        return cls(activity=instructions, adventureId=adventureId, creatorId=creatorId)
 
     def to_dict(self):
         return {
