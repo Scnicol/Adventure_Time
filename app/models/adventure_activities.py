@@ -24,7 +24,7 @@ class Friend(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'adventureId': self.adventureId,
             'status': self.status,
-            'uid1': self.userId1,
-            'uid2': self.userId2,
+            'activityId': self.activityId,
         }
