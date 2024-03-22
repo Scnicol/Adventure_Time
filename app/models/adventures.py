@@ -25,7 +25,7 @@ class Adventure(db.Model, UserMixin):
     directionChoices = db.relationship('Direction', foreign_keys='Direction.adventureId', back_populates='adventure' )
     pictures = db.relationship('Picture', foreign_keys='Picture.adventureId', back_populates='adventure' )
 
-    activities = db.relationship('Activity', secondary=adventureActivitiesTable, back_populates='adventures')
+    activities = db.relationship('Activity', back_populates='adventures')
 
     # Methods _________________________
 

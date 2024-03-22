@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-class Friend(db.Model, UserMixin):
+class Adventure_activities(db.Model, UserMixin):
     __tablename__ = 'adventure_activities'
 
     if environment == 'production':
@@ -16,8 +16,8 @@ class Friend(db.Model, UserMixin):
 
     # Relationships _____________________
 
-    user1 = db.relationship('User', foreign_keys='Friend.userId1', back_populates='userId1')
-    user2 = db.relationship('User', foreign_keys='Friend.userId2', back_populates='userId2')
+    adventures = db.relationship('User', foreign_keys='Adventure.id', back_populates='activities')
+    activities = db.relationship('User', foreign_keys='Activities.id', back_populates='adventures')
 
     # Methods _________________________
 
