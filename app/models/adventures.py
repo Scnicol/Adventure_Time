@@ -1,7 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from flask_login import UserMixin
 from datetime import datetime
-from .adventures_instructions import adventureActivitiesTable
 
 class Adventure(db.Model, UserMixin):
     __tablename__ = 'adventures'
@@ -21,11 +20,11 @@ class Adventure(db.Model, UserMixin):
 
     creator = db.relationship('User', foreign_keys='Adventure.creatorId', back_populates='adventures')
 
-    foodChoices = db.relationship('Food', foreign_keys='Food.adventureId', back_populates='adventure' )
-    directionChoices = db.relationship('Direction', foreign_keys='Direction.adventureId', back_populates='adventure' )
     pictures = db.relationship('Picture', foreign_keys='Picture.adventureId', back_populates='adventure' )
 
-    activities = db.relationship('Activity', back_populates='adventures')
+    foodChoices = db.relationship('Food', foreign_keys='Food.adventureId', back_populates='adventure' )
+    directionChoices = db.relationship('Direction', foreign_keys='Direction.adventureId', back_populates='adventure' )
+    activityChoices = db.relationship('Activity', back_populates='adventures')
 
     # Methods _________________________
 
