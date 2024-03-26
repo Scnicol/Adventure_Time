@@ -22,11 +22,13 @@ class Adventure(db.Model, UserMixin):
 
     pictures = db.relationship('Picture', foreign_keys='Picture.adventureId', back_populates='adventure' )
 
-    foodChoices = db.relationship('Food', foreign_keys='Food.adventureId', back_populates='adventure' )
-    directionChoices = db.relationship('Direction', foreign_keys='Direction.adventureId', back_populates='adventure' )
-    activityChoices = db.relationship('Activity', back_populates='adventures')
+    instructionAssociations = db.relationship('AdventureInstruction', back_populates='adventure')
 
     # Methods _________________________
+
+    # TODO ask chatgpt how to query a join table to improve method below
+    def all_instructions(self):
+        return [instructionAssociation.instruction for instructionAssociation in self.instructionAssociations]
 
     def to_dict(self):
         return {
