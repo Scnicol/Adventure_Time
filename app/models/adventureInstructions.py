@@ -30,3 +30,8 @@ class AdventureActivities(AdventureInstructions):
     __tablename__ = 'adventure_activities'
 
     __instruction_column__ = 'activities.id'
+
+class AdventureDirections(AdventureInstructions):
+    __tablename__ = 'adventure_directions'
+
+    __instruction_column__ = 'activities.id'
