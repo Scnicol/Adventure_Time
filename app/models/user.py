@@ -11,8 +11,19 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
+    name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    # Relationships _____________________
+
+    adventures = db.relationship('Adventure', foreign_keys='Adventure.creatorId', back_populates='creator', cascade='all, delete-orphan')
+
+    userId1 = db.relationship('Friend', foreign_keys="Friend.userId1", back_populates="user1", cascade='all, delete-orphan')
+    userId2 = db.relationship('Friend', foreign_keys="Friend.userId2", back_populates="user2", cascade='all, delete-orphan')
+
+  # Methods _________________________
+
 
     @property
     def password(self):
