@@ -1,9 +1,6 @@
 from flask.cli import AppGroup
 
-from .activities import seed_activities, undo_activities
 from .adventures import seed_adventures, undo_adventures
-from .directions import seed_directions, undo_directions
-from .food import seed_food, undo_food
 from .friends import seed_friends, undo_friends
 from .users import seed_users, undo_users
 from .pictures import seed_picture, undo_picture
