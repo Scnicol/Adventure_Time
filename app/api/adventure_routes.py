@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import Adventure, User, db, Activity
+from app.models import Adventure, User, db
 from app.forms.adventure_form import CreateAdventureForm
 from datetime import datetime
 from .auth_routes import validation_errors_to_error_messages
@@ -114,5 +114,3 @@ def delete_adventure(adventureId):
     db.session.delete(adventure)
     db.session.commit()
     return {'message': 'Adventure successfully deleted'}
-
-
