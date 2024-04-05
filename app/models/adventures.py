@@ -24,6 +24,8 @@ class Adventure(db.Model, UserMixin):
 
     instructionAssociations = db.relationship('AdventureInstruction', back_populates='adventure')
 
+    userMemberships = db.relationship('AdventureMembership', back_populates='adventure')
+
     # Methods _________________________
 
     # TODO ask chatgpt how to query a join table to improve method below
