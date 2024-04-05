@@ -15,7 +15,7 @@ class AdventureInstruction(db.Model, UserMixin):
     # Relationships _____________________
 
     adventure = db.relationship('Adventure', foreign_keys='AdventureInstruction.adventureId', back_populates='instructionAssociations')
-    instruction = db.relationship('Instruction', foreign_keys='AdventureInstruction.instructionId', back_populates='adventures')
+    instruction = db.relationship('Instruction', foreign_keys='AdventureInstruction.instructionId', back_populates='adventureAssociations')
 
     # Methods _________________________
 

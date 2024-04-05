@@ -17,9 +17,10 @@ class Instruction(db.Model, UserMixin):
 
     # Relationships _____________________
 
-    # TODO add another relationship 
-
     instructionType = db.relationship('InstructionType', foreign_keys='Instruction.instructionTypeId', back_populates='instructions' )
+    creator = db.relationship('Instruction', foreign_keys='Instruction.creatorId', back_populates='instructions')
+
+    adventureAssociations = db.relationship('AdventureInstruction', foreign_keys='AdventureInstruction.instructionId', back_populates='instruction')
 
     # Methods _________________________
 

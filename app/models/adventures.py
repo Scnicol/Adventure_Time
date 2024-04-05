@@ -20,11 +20,11 @@ class Adventure(db.Model, UserMixin):
 
     creator = db.relationship('User', foreign_keys='Adventure.creatorId', back_populates='adventures')
 
-    pictures = db.relationship('Picture', foreign_keys='Picture.adventureId', back_populates='adventure' )
+    pictures = db.relationship('Picture', foreign_keys='Picture.adventureId', back_populates='adventure', cascade='all, delete-orphan' )
 
-    instructionAssociations = db.relationship('AdventureInstruction', back_populates='adventure')
+    instructionAssociations = db.relationship('AdventureInstruction', back_populates='adventure', cascade='all, delete-orphan')
 
-    userMemberships = db.relationship('AdventureMembership', back_populates='adventure')
+    userMemberships = db.relationship('AdventureMembership', back_populates='adventure', cascade='all, delete-orphan')
 
     # Methods _________________________
 
