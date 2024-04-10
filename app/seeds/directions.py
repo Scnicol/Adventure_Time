@@ -7,107 +7,107 @@ def makeDirections(creatorId, directions):
 
 def seed_directions_instructions():
     direction1 = makeDirections(
-        direction = 'follow a yellow car for 2 minutes',
+        directions = 'follow a yellow car for 2 minutes',
         creatorId = 1
     )
 
     direction2 = makeDirections(
-        direction = 'follow a red car for 2 minutes',
+        directions = 'follow a red car for 2 minutes',
         creatorId = 1
     )
 
     direction3 = makeDirections(
-        direction = 'follow a white car for 2 minutes',
+        directions = 'follow a white car for 2 minutes',
         creatorId = 1
     )
 
     direction4 = makeDirections(
-        direction = 'call a friend and ask for directions for 2 minutes',
+        directions = 'call a friend and ask for directions for 2 minutes',
         creatorId = 1
     )
 
     direction5 = makeDirections(
-        direction = 'go right 5 times and then go straight',
+        directions = 'go right 5 times and then go straight',
         creatorId = 1
     )
 
     direction6 = makeDirections(
-        direction = 'go right then left then straight',
+        directions = 'go right then left then straight',
         creatorId = 2
     )
 
     direction7 = makeDirections(
-        direction = 'let the co-pilot steer the directions from their seat for 2 minutes',
+        directions = 'let the co-pilot steer the directions from their seat for 2 minutes',
         creatorId = 2
     )
 
     direction8 = makeDirections(
-        direction = 'follow the sun for 10 minutes',
+        directions = 'follow the sun for 10 minutes',
         creatorId = 2
     )
 
     direction9 = makeDirections(
-        direction = 'follow the moon for 10 minutes',
+        directions = 'follow the moon for 10 minutes',
         creatorId = 2
     )
 
     direction10 = makeDirections(
-        direction = 'roll down window and ask someone for random directions on the street',
+        directions = 'roll down window and ask someone for random directions on the street',
         creatorId = 2
     )
 
     direction11 = makeDirections(
-        direction = 'each person in turn pick a direction at an intersection until everyone has done this once',
+        directions = 'each person in turn pick a directions at an intersection until everyone has done this once',
         creatorId = 2
     )
 
     direction12 = makeDirections(
-        direction = 'drive opposite the sun for 10 minutes',
+        directions = 'drive opposite the sun for 10 minutes',
         creatorId = 3
     )
 
     direction13 = makeDirections(
-        direction = 'drive opposite the moon for 10 minutes',
+        directions = 'drive opposite the moon for 10 minutes',
         creatorId = 3
     )
 
     direction14 = makeDirections(
-        direction = 'look for tallest building in the distance and try to get as close to it for 3 minutes',
+        directions = 'look for tallest building in the distance and try to get as close to it for 3 minutes',
         creatorId = 3
     )
 
     direction15 = makeDirections(
-        direction = 'follow nearest green car',
+        directions = 'follow nearest green car',
         creatorId = 3
     )
 
     direction16 = makeDirections(
-        direction = 'call a friend and ask them to give you a directions for 2 minutes',
+        directions = 'call a friend and ask them to give you a directions for 2 minutes',
         creatorId = 3
     )
 
     direction17 = makeDirections(
-        direction = 'make a wheel with turn left, turn right, go straight on it and spin it for each intersection for 2 minutes',
+        directions = 'make a wheel with turn left, turn right, go straight on it and spin it for each intersection for 2 minutes',
         creatorId = 1
     )
 
     direction18 = makeDirections(
-        direction = 'for 2 minutes if you are at a stop sign go straight, if you are at a light and its red turn left, if its green is turn right',
+        directions = 'for 2 minutes if you are at a stop sign go straight, if you are at a light and its red turn left, if its green is turn right',
         creatorId = 1
     )
 
     direction19 = makeDirections(
-        direction = 'drive straight with music that has lyrics until they sing the name of the song',
+        directions = 'drive straight with music that has lyrics until they sing the name of the song',
         creatorId = 3
     )
 
     direction20 = makeDirections(
-        direction = 'follow the direction the wind is blowing for two minutes',
+        directions = 'follow the directions the wind is blowing for two minutes',
         creatorId = 1
     )
 
     direction21 = makeDirections(
-        direction = 'follow your nose! wherever it goes!',
+        directions = 'follow your nose! wherever it goes!',
         creatorId = 1
     )
 
@@ -135,11 +135,3 @@ def seed_directions_instructions():
 
     db.session.commit()
 
-def undo_directions_instructions():
-
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.directions RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM directions"))
-
-    db.session.commit()
