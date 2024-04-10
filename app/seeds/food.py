@@ -6,108 +6,108 @@ def makeFood(creatorId, food):
     return Instruction(creatorId = creatorId, instructionType = foodType, instructions = food)
 
 def seed_food_instructions():
-    food1 = Food(
-        adventureId = 1,
+    food1 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Mexican restaurant'
     )
 
-    food2 = Food(
-        adventureId = 1,
+    food2 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Pizza restaurant'
     )
 
-    food3 = Food(
-        adventureId = 1,
+    food3 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Hamburger restaurant'
     )
 
-    food4 = Food(
-        adventureId = 1,
+    food4 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Chinese restaurant'
     )
 
-    food5 = Food(
-        adventureId = 1,
+    food5 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Japanese restaurant'
     )
 
-    food6 = Food(
-        adventureId = 1,
+    food6 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Greek restaurant'
     )
 
-    food7 = Food(
-        adventureId = 1,
+    food7 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Italian restaurant'
     )
 
-    food8 = Food(
-        adventureId = 1,
+    food8 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Sushi restaurant'
     )
 
-    food9 = Food(
-        adventureId = 1,
+    food9 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Ethiopian restaurant'
     )
 
-    food10 = Food(
-        adventureId = 1,
+    food10 = makeFood(
+        creatorId = 1,
         food = 'Find nearest Sandwich restaurant'
     )
 
-    food11 = Food(
-        adventureId = 2,
+    food11 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Taco restaurant'
     )
 
-    food12 = Food(
-        adventureId = 2,
+    food12 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Dumpling restaurant'
     )
 
-    food13 = Food(
-        adventureId = 2,
+    food13 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Salad restaurant'
     )
 
-    food14 = Food(
-        adventureId = 2,
+    food14 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Fish restaurant'
     )
 
-    food15 = Food(
-        adventureId = 2,
+    food15 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Michelan Star restaurant'
     )
 
-    food16 = Food(
-        adventureId = 2,
+    food16 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Kebab restaurant'
     )
 
-    food17 = Food(
-        adventureId = 2,
+    food17 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Barbeque restaurant'
     )
 
-    food18 = Food(
-        adventureId = 2,
+    food18 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Mediteranian restaurant'
     )
 
-    food19 = Food(
-        adventureId = 2,
+    food19 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Thai restaurant'
     )
 
-    food20 = Food(
-        adventureId = 2,
+    food20 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Taquerian restaurant'
     )
 
-    food21 = Food(
-        adventureId = 2,
+    food21 = makeFood(
+        creatorId = 2,
         food = 'Find nearest Breakfast restaurant'
     )
 
