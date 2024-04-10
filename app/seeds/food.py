@@ -1,7 +1,11 @@
-from app.models import db, Food, environment, SCHEMA
+from app.models import db, Instruction, environment, SCHEMA
+from .instructionTypes import foodType
 from sqlalchemy.sql import text
 
-def seed_food():
+def makeFood(creatorId, food):
+    return Instruction(creatorId = creatorId, instructionType = foodType, instructions = food)
+
+def seed_food_instructions():
     food1 = Food(
         adventureId = 1,
         food = 'Find nearest Mexican restaurant'
@@ -131,7 +135,7 @@ def seed_food():
 
     db.session.commit()
 
-def undo_food():
+def undo_food_instructions():
 
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.food RESTART IDENTITY CASCADE;")
