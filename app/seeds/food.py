@@ -135,11 +135,3 @@ def seed_food_instructions():
 
     db.session.commit()
 
-def undo_food_instructions():
-
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.food RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM food"))
-
-    db.session.commit()
