@@ -5,6 +5,7 @@ from .friends import seed_friends, undo_friends
 from .users import seed_users, undo_users
 from .pictures import seed_picture, undo_picture
 
+
 from app.models.db import db, environment, SCHEMA
 
 # Creates a seed group to hold our commands
