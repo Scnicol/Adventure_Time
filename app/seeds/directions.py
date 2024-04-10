@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 def makeDirections(creatorId, directions):
     return Instruction(creatorId = creatorId, instructionType = directionsType, instructions = directions)
 
-def seed_directions():
+def seed_directions_instructions():
     direction1 = Direction(
         adventureId = 1,
         direction = 'follow a yellow car for 2 minutes',
@@ -156,7 +156,7 @@ def seed_directions():
 
     db.session.commit()
 
-def undo_directions():
+def undo_directions_instructions():
 
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.directions RESTART IDENTITY CASCADE;")

@@ -5,7 +5,7 @@ from sqlalchemy.sql import text
 def makeActivity(creatorId, activity):
     return Instruction(creatorId = creatorId, instructionType = activityType, instructions = activity)
 
-def seed_activities():
+def seed_activities_instructions():
     activity1 = Activity(
         creatorId = 1,
         activity = 'go for a hike at closest regional park'
@@ -135,7 +135,7 @@ def seed_activities():
 
     db.session.commit()
 
-def undo_activities():
+def undo_activities_instructions():
 
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.activities RESTART IDENTITY CASCADE;")
