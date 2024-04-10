@@ -1,5 +1,9 @@
-from app.models import db, Direction, environment, SCHEMA
+from app.models import db, Instruction, environment, SCHEMA
+from .instructionTypes import directionsType
 from sqlalchemy.sql import text
+
+def makeDirections(creatorId, directions):
+    return Instruction(creatorId = creatorId, instructionType = directionsType, instructions = directions)
 
 def seed_directions():
     direction1 = Direction(
