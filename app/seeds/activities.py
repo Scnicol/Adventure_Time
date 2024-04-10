@@ -135,11 +135,3 @@ def seed_activities_instructions():
 
     db.session.commit()
 
-def undo_activities_instructions():
-
-    if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.activities RESTART IDENTITY CASCADE;")
-    else:
-        db.session.execute(text("DELETE FROM activities"))
-
-    db.session.commit()
