@@ -1,5 +1,9 @@
-from app.models import db, Activity, environment, SCHEMA
+from app.models import db, Instruction, environment, SCHEMA
+from .instructionTypes import activityType
 from sqlalchemy.sql import text
+
+def makeActivity(creatorId, activity):
+    return Instruction(creatorId = creatorId, instructionType = activityType, instructions = activity)
 
 def seed_activities():
     activity1 = Activity(
