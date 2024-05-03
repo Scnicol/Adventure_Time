@@ -23,8 +23,8 @@ class Friend(db.Model, UserMixin):
 
     # Relationships _____________________
 
-    user1 = db.relationship('User', foreign_keys='Friend.userId1', back_populates='friends')
-    user2 = db.relationship('User', foreign_keys='Friend.userId2', back_populates='friends')
+    # user1 = db.relationship('User', foreign_keys='Friend.userId1', back_populates='friends')
+    # user2 = db.relationship('User', foreign_keys='Friend.userId2', back_populates='friends')
 
     # Methods _________________________
 
