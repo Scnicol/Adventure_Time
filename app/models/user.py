@@ -20,7 +20,8 @@ class User(db.Model, UserMixin):
     adventures = db.relationship('Adventure', foreign_keys='Adventure.creatorId', back_populates='creator', cascade='all, delete-orphan')
     adventureMemberships = db.relationship('AdventureMembership', foreign_keys='AdventureMembership.userId', back_populates='user', cascade='all, delete-orphan')
 
-    # friends = db.relationship('Friend', foreign_keys=["Friend.userId1", "Friend.userId2"], back_populates="user1", cascade='all, delete-orphan')
+    friends1 = db.relationship('Friend', foreign_keys="Friend.userId1", back_populates="user1", cascade='all, delete-orphan')
+    friends2 = db.relationship('Friend', foreign_keys="Friend.userId2", back_populates="user1", cascade='all, delete-orphan')
     instructions = db.relationship('Instruction', foreign_keys='Instruction.creatorId', back_populates='creator', cascade='all, delete-orphan')
 
   # Methods _________________________
