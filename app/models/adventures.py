@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .adventureInstructions import AdventureInstruction
 from flask_login import UserMixin
 from datetime import datetime
 
@@ -31,6 +32,13 @@ class Adventure(db.Model, UserMixin):
     # TODO ask chatgpt how to query a join table to improve method below
     def all_instructions(self):
         return [instructionAssociation.instruction for instructionAssociation in self.instructionAssociations]
+
+    def add_instruction(self, instruction):
+        adventureInstruction = AdventureInstruction(
+            adventure = self, instruction = instruction
+        )
+
+        db.session.add(adventureInstruction)
 
     def to_dict(self):
         return {
