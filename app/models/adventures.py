@@ -40,6 +40,8 @@ class Adventure(db.Model, UserMixin):
 
         db.session.add(adventureInstruction)
 
+    
+
     def to_dict(self):
         return {
             'id': self.id,
