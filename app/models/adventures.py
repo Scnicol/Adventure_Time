@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .adventureInstructions import AdventureInstruction
+from .adventureMemberships import AdventureMembership
 from flask_login import UserMixin
 from datetime import datetime
 
@@ -40,7 +41,8 @@ class Adventure(db.Model, UserMixin):
 
         db.session.add(adventureInstruction)
 
-    
+    def add_member(self, member):
+        adventureMember = AdventureMembership
 
     def to_dict(self):
         return {
