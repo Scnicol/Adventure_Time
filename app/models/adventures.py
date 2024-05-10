@@ -42,7 +42,11 @@ class Adventure(db.Model, UserMixin):
         db.session.add(adventureInstruction)
 
     def add_member(self, member):
-        adventureMember = AdventureMembership
+        adventureMember = AdventureMembership(
+            adventure = self, member = member
+        )
+
+        db.session.add(adventureMember)
 
     def to_dict(self):
         return {
