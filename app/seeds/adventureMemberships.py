@@ -4,8 +4,8 @@ from sqlalchemy.sql import text
 
 def seed_adventureMemberships():
     for adventure in demo.adventures:
-        for member in demo.instructions:
-            adventure.add_instruction(member)
+        for member in adventure.member:
+            adventure.add_member(member)
 
     db.session.commit()
 
