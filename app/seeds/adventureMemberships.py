@@ -1,10 +1,10 @@
-from app.models import db, AdventureMembership, environment, SCHEMA
+from app.models import db, AdventureMembership, User, environment, SCHEMA
 from .users import *
 from sqlalchemy.sql import text
 
 def seed_adventureMemberships():
     for adventure in demo.adventures:
-        for member in adventure.member:
+        for member in users.id:
             adventure.add_member(member)
 
     db.session.commit()
