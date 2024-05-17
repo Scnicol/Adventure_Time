@@ -44,3 +44,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email
         }
+
+    def memberships(self):
+        all = self.query.all()
+        return [member for member in all if member.status == "accepted"]
