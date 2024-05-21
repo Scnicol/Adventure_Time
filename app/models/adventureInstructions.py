@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 class AdventureInstruction(db.Model, UserMixin):
-    __table_name__ = 'adventure_instructions'
+    __tablename__ = 'adventure_instructions'
 
     if environment == 'production':
         __table_args__ = {'schema': SCHEMA}
