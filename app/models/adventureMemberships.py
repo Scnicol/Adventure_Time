@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from flask_login import UserMixin
 
 class AdventureMembership(db.Model, UserMixin):
-    __table_name__ = 'adventure_memberships'
+    __tablename__ = 'adventure_memberships'
 
     if environment == 'production':
         __table_args__ = {'schema': SCHEMA}
