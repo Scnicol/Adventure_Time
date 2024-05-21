@@ -6,6 +6,7 @@ from .users import seed_users, undo_users
 from .pictures import seed_picture, undo_picture
 from .instructions import seed_instructions, undo_instructions
 from .adventureInstructions import seed_adventureInstructions, undo_adventureInstructions
+from .adventureMemberships import seed_adventureMemberships, undo_adventureMemberships
 
 
 from app.models.db import db, environment, SCHEMA
@@ -31,6 +32,7 @@ def seed():
     seed_picture()
     seed_instructions()
     seed_adventureInstructions()
+    seed_adventureMemberships()
 
     # Add other seed functions here
 
@@ -45,4 +47,5 @@ def undo():
     undo_picture()
     undo_instructions()
     undo_adventureInstructions()
+    undo_adventureMemberships()
     # Add other undo functions here
