@@ -11,8 +11,8 @@ def seed_adventureInstructions():
 
 def undo_adventureInstructions():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.{AdventureInstruction.__table_name__} RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.{AdventureInstruction.__tablename__} RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text(f"DELETE FROM {AdventureInstruction.__table_name__}"))
+        db.session.execute(text(f"DELETE FROM {AdventureInstruction.__tablename__}"))
 
     db.session.commit()
