@@ -20,9 +20,16 @@ def seed_friends():
         status = 'request_userId1'
     )
 
+    friend4 = Friend(
+        userId1 = 1,
+        userId2 = 4,
+        status = 'Friend'
+    )
+
     db.session.add(friend1)
     db.session.add(friend2)
     db.session.add(friend3)
+    db.session.add(friend4)
 
     db.session.commit()
 
