@@ -111,6 +111,11 @@ def seed_food_instructions():
         food = 'Find nearest Breakfast restaurant'
     )
 
+    food22 = makeFood(
+        creatorId = 4,
+        food = "Stop at a foodie hub and everone go bring back something around 10$ then share!"
+    )
+
     db.session.add(food1)
     db.session.add(food2)
     db.session.add(food3)
@@ -132,6 +137,6 @@ def seed_food_instructions():
     db.session.add(food19)
     db.session.add(food20)
     db.session.add(food21)
+    db.session.add(food22)
 
     db.session.commit()
-
