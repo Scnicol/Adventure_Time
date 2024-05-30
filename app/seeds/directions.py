@@ -111,6 +111,11 @@ def seed_directions_instructions():
         creatorId = 1
     )
 
+    direction22 = makeDirections(
+        directions = "find the lane with the most cars and follow that lane for 3 minutes",
+        creatorId = 4
+    )
+
     db.session.add(direction1)
     db.session.add(direction2)
     db.session.add(direction3)
@@ -132,6 +137,6 @@ def seed_directions_instructions():
     db.session.add(direction19)
     db.session.add(direction20)
     db.session.add(direction21)
+    db.session.add(direction22)
 
     db.session.commit()
-
