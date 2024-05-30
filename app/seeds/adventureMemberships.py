@@ -12,8 +12,13 @@ def seed_adventureMemberships():
         adventure = adventure1, user = bobbie, status = "declined"
     )
 
+    member3 = AdventureMembership(
+        adventure = adventure1, user = henrietta, status = "accepted"
+    )
+
     db.session.add(member1)
     db.session.add(member2)
+    db.session.add(member3)
     db.session.commit()
 
 def undo_adventureMemberships():
