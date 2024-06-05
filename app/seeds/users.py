@@ -5,8 +5,7 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 
 henrietta = User(
-    username='Henri', name='Henrietta', email='henri@qen.com', password='pretty123'
-)
+    username='Henri', name='Henrietta', email='henri@qen.com', password='pretty123')
 demo = User(
     username='Demo', name='Demolition', email='demo@aa.io', password='password')
 marnie = User(
