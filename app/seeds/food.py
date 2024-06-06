@@ -148,5 +148,7 @@ def seed_food_instructions():
     db.session.add(food20)
     db.session.add(food21)
     db.session.add(food22)
+    db.session.add(food24)
+    db.session.add(food23)
 
     db.session.commit()
