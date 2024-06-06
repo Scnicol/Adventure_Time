@@ -111,6 +111,16 @@ def seed_activities_instructions():
         activity = 'look for a small bakeshop to get some new exciting ingredients and make something with them when you get home!'
     )
 
+    activity22 = makeActivity(
+        creatorId = 4,
+        activity = 'stop the car and everyone look for something close to the color of next upcoming holiday'
+    )
+
+    activity23 = makeActivity(
+        creatorId = 4,
+        activity = 'Call a friend and ask them for a simple activity to do in the car'
+    )
+
     db.session.add(activity1)
     db.session.add(activity2)
     db.session.add(activity3)
@@ -132,6 +142,7 @@ def seed_activities_instructions():
     db.session.add(activity19)
     db.session.add(activity20)
     db.session.add(activity21)
+    db.session.add(activity22)
+    db.sessions.add(activity23)
 
     db.session.commit()
-
