@@ -116,6 +116,16 @@ def seed_food_instructions():
         food = "Stop at a foodie hub and everone go bring back something around 10$ then share!"
     )
 
+    food23 = makeFood(
+        creatorId = 4,
+        food = "Stop, get out and everyone look for a place to eat, first person to find something atleast 3 people would like chooses that place to eat"
+    )
+
+    food24 = makeFood(
+        creatorId = 4,
+        food = "Go into store and each buy different types of food, go out and find a place to have a picnic"
+    )
+
     db.session.add(food1)
     db.session.add(food2)
     db.session.add(food3)
