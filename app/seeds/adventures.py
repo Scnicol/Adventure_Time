@@ -23,6 +23,13 @@ adventure3 = Adventure(
     adventureDate=date(2024, 7, 22)
 )
 
+adventure4 = Adventure(
+    creatorId=4,
+    name="Happy Sun Go!!",
+    description="Time to Go in the Sun with Happiness",
+    adventureDate=date(2025, 4, 18)
+)
+
 
 def seed_adventures():
     db.session.add(adventure1)
