@@ -1,8 +1,16 @@
 // ______ACTION_TYPES____________
 const GET_USERS = 'users/GET_USERS'
+const GET_USER_BY_ID = 'users/GET_USER_BY_ID'
 
 // ______ACTIONS_______________
 const actionGetUsers = (users) => ({
     type: GET_USERS,
     users
 })
+
+const actionGetUserById = (user) => ({
+    type: GET_USER_BY_ID,
+    user
+})
+
+// _______THUNK_ACTIONS_________
