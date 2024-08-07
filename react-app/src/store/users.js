@@ -14,3 +14,11 @@ const actionGetUserById = (user) => ({
 })
 
 // _______THUNK_ACTIONS_________
+export const getUsers = () => async dispatch => {
+    const response = await fetch(`/api/users`);
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(actionGetUsers(data.users))
+    }
+}
