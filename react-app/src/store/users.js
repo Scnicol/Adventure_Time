@@ -34,3 +34,20 @@ export const getUserById = (userId) => async dispatch => {
 
 // _____CREATE_INITIAL_STATE_________
 const initialState = {};
+
+// _________USERS_REDUCER_____________
+const userReducer = (state = initialState, action) => {
+    let newState = {};
+
+    switch (action.type) {
+        case GET_USERS:
+            let usersState = {};
+            action.users.forEach(user => {
+                usersState[user.id] = user;
+            })
+            return {
+                ...state,
+                ...usersState
+            }
+    }
+}
