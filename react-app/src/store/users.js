@@ -22,3 +22,12 @@ export const getUsers = () => async dispatch => {
         dispatch(actionGetUsers(data.users))
     }
 }
+
+export const getUserById = (userId) => async dispatch => {
+    const response = await fetch(`/api/users/${userId}`)
+
+    if (response.ok) {
+        const user = await response.json();
+        dispatch(actionGetUserById(user))
+    }
+}
