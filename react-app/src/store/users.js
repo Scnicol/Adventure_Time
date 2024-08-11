@@ -31,3 +31,6 @@ export const getUserById = (userId) => async dispatch => {
         dispatch(actionGetUserById(user))
     }
 }
+
+// _____CREATE_INITIAL_STATE_________
+const initialState = {};
