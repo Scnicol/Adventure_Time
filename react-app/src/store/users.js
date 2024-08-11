@@ -49,5 +49,9 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 ...usersState
             }
+        default:
+            return state;
     }
 }
+
+export default userReducer;
