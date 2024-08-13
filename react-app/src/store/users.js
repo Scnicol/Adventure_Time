@@ -49,6 +49,10 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 ...usersState
             }
+        case GET_USER_BY_ID:
+            return {
+                ...state,
+                [action.user.id]: action.user}
         default:
             return state;
     }
