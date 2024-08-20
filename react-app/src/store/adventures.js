@@ -12,3 +12,22 @@ const actionGetAdventureById = (adventure) => ({
     type: GET_ADVENTURE_BY_ID,
     adventure
 })
+
+//______THUNK_ACTIONS____________
+export const getAdventures = () => async dispatch => {
+    const response = await fetch(`/api/adventures`);
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(actionGetAdventures(data.adventures))
+    }
+}
+
+export const getAdventureById = (adventureId) => async dispatch => {
+    const response = await fetch(`/api/adventures/${adventureId}`)
+
+    if (response.ok) {
+        const adventure = await response.json();
+        dispatch(actionGetAdventureById(adventure))
+    }
+}
