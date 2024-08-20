@@ -31,3 +31,16 @@ export const getAdventureById = (adventureId) => async dispatch => {
         dispatch(actionGetAdventureById(adventure))
     }
 }
+
+// _____CREATE_INITIAL_STATE_________
+const initialState = {};
+
+
+// _________ADVENTURES_REDUCER_____________
+const adventurReducer = (state = initialState, action) => {
+    let newState = {};
+    switch (action.type) {
+        case GET_ADVENTURES:
+
+    }
+}
