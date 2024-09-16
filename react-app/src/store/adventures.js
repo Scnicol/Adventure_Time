@@ -54,5 +54,7 @@ const adventurReducer = (state = initialState, action) => {
                 ...state,
                 [action.adventure.id]: action.adventure
             }
+        default:
+            return state;
     }
 }
