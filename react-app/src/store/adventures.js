@@ -49,5 +49,10 @@ const adventurReducer = (state = initialState, action) => {
                 ...state,
                 ...adventuresState
             }
+        case GET_ADVENTURE_BY_ID:
+            return {
+                ...state,
+                [action.adventure.id]: action.adventure
+            }
     }
 }
