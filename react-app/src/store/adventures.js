@@ -41,6 +41,13 @@ const adventurReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
         case GET_ADVENTURES:
-
+            let adventuresState = {};
+            action.adventures.forEach(adventure => {
+                adventureState[adventure.id] = user;
+            })
+            return {
+                ...state,
+                ...adventuresState
+            }
     }
 }
