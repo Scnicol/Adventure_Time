@@ -43,7 +43,7 @@ const adventurReducer = (state = initialState, action) => {
         case GET_ADVENTURES:
             let adventuresState = {};
             action.adventures.forEach(adventure => {
-                adventureState[adventure.id] = user;
+                adventuresState[adventure.id] = user;
             })
             return {
                 ...state,
