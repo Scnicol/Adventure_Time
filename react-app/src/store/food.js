@@ -47,6 +47,11 @@ const foodReducer = (state = initialState, action) => {
             action.food.forEach(food => {
                 foodState[food.id] = food;
             })
+        case GET_FOOD_BY_ID:
+            return {
+                ...state,
+                [action.food.id]: action.food
+            }
         default:
             return state;
     }
