@@ -32,6 +32,10 @@ const foodReducer = (state = initialState, action) => {
             action.food.forEach(food => {
                 foodState[food.id] = food;
             })
-
+        default:
+            return state;
     }
 }
+
+
+export default foodReducer;
