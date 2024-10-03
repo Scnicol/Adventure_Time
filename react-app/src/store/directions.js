@@ -29,5 +29,12 @@ const directionReducer = (state = initialState, action) => {
             action.directions.forEach(direction => {
                 directionState[direction.id] = direction;
             })
+            return {
+                ...state,
+                ...directionState
+            }
+        default:
+            return state;
     }
 }
+ export default directionReducer;
