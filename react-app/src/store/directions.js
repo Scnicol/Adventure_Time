@@ -17,7 +17,14 @@ export const getDirections = () => async dispatch => {
     }
 }
 
+// ______CREATE_INITIAL_STATE_____________
+const initialState = {};
+
 // _____________DIRECTIONS_REDUCER______________
 const directionReducer = (state = initialState, action) => {
-    
+    let newState = {};
+    switch (action.type) {
+        case GET_DIRECTIONS:
+            let dire
+    }
 }
