@@ -25,6 +25,9 @@ const directionReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
         case GET_DIRECTIONS:
-            let dire
+            let directionState = {};
+            action.directions.forEach(direction => {
+                directionState[direction.id] = direction;
+            })
     }
 }
