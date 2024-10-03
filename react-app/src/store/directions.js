@@ -37,4 +37,5 @@ const directionReducer = (state = initialState, action) => {
             return state;
     }
 }
+
  export default directionReducer;
