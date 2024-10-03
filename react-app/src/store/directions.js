@@ -16,3 +16,8 @@ export const getDirections = () => async dispatch => {
         dispatch(actionGetDirections(data.directions))
     }
 }
+
+// _____________DIRECTIONS_REDUCER______________
+const directionReducer = (state = initialState, action) => {
+    
+}
