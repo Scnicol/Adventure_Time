@@ -8,6 +8,11 @@ const actionGetDirections = (directions) => ({
     directions
 })
 
+const actionGetDirectionByID = (directions) => ({
+    type: GET_DIRECTION_BY_ID,
+    directions
+})
+
 //______THUNK_ACTIONS________________
 export const getDirections = () => async dispatch => {
     const response = await fetch(`api/directions`);
