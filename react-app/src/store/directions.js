@@ -1,5 +1,6 @@
 // __________ACTION_TYPES_____________
 const GET_DIRECTIONS = 'directions/GET_DIRECTIONS'
+const GET_DIRECTION_BY_ID = 'directions/GET_DIRECTION_BY_ID'
 
 // __________ACTIONS_________________
 const actionGetDirections = (directions) => ({
