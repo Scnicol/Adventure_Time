@@ -23,6 +23,16 @@ export const getDirections = () => async dispatch => {
     }
 }
 
+export const getDirectionById = (directionId) => async dispatch => {
+    const response = await fetch(`/api/challenges/${directionId}`)
+
+    if (response.ok) {
+        const direction = await response.json();
+        dispatch(actionGetDirectionByID(direction))
+    }
+
+}
+
 // ______CREATE_INITIAL_STATE_____________
 const initialState = {};
 
