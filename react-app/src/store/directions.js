@@ -49,6 +49,12 @@ const directionReducer = (state = initialState, action) => {
                 ...state,
                 ...directionState
             }
+        case GET_DIRECTION_BY_ID:
+            return {
+            ...state,
+            [action.direction.id]: action.direction
+            }
+
         default:
             return state;
     }
