@@ -36,7 +36,21 @@ export const getDirectionById = (directionId) => async dispatch => {
         const direction = await response.json();
         dispatch(actionGetDirectionByID(direction))
     }
+}
 
+export const createDirection = (direction) => async dispatch => {
+    const response = await fetch(`api/directions`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(direction)
+    });
+
+    if (response.ok) {
+        let newDirection = await response.json();
+        dispatch(actiongCreateDirection(newDirection))
+
+        return newChallenge;
+    }
 }
 
 // ______CREATE_INITIAL_STATE_____________
