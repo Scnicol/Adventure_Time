@@ -1,6 +1,7 @@
 // ___________ACTION_TYPES___________________
 const GET_ADVENTURES = 'adventures/GET_ADVENTURES'
 const GET_ADVENTURE_BY_ID = 'adventures/GET_ADVENTURE_BY_ID'
+const CREATE_ADVENTURE = 'adventures/CREATE_ADVENTURE'
 
 // ______ACTIONS____________
 const actionGetAdventures = (adventures) => ({
@@ -10,6 +11,11 @@ const actionGetAdventures = (adventures) => ({
 
 const actionGetAdventureById = (adventure) => ({
     type: GET_ADVENTURE_BY_ID,
+    adventure
+})
+
+const actionCreateAdventure = (adventure) => ({
+    type: CREATE_ADVENTURE,
     adventure
 })
 
@@ -29,6 +35,22 @@ export const getAdventureById = (adventureId) => async dispatch => {
     if (response.ok) {
         const adventure = await response.json();
         dispatch(actionGetAdventureById(adventure))
+    }
+}
+
+export const createAdventure = (adventure) => async disptach => {
+    const response = await fetch(`/api/adventures`,
+        {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(adventure)
+        }
+    );
+
+    if (response.ok) {
+        let newAdventure = await response.json();
+        dispatch(actionCreateAdventure(newChallenge))
+        return newAdventure;
     }
 }
 
