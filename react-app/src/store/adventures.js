@@ -58,3 +58,5 @@ const adventurReducer = (state = initialState, action) => {
             return state;
     }
 }
+
+export default adventurReducer;
