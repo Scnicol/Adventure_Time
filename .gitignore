@@ -53,6 +53,7 @@ yarn-error.log*
 
 # Migrations (optional, if you want to ignore generated migration files)
 # migrations/
+versions/
 
 # Local SQLite database
 *.sqlite3

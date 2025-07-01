@@ -11,6 +11,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
+    fetch("/api/csrf/restore", { credentials: "include" });
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 

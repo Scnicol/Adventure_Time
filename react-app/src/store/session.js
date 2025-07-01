@@ -39,6 +39,7 @@ export const login = (email, password) => async (dispatch) => {
 			email,
 			password,
 		}),
+		credentials: "include"
 	});
 
 	if (response.ok) {
@@ -78,6 +79,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 			email,
 			password,
 		}),
+		credentials: "include"
 	});
 
 	if (response.ok) {
