@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, send_from_directory
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -17,7 +17,7 @@ app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
 # Setup login manager
 login = LoginManager(app)
-login.login_view = 'auth.unauthorized'
+login.login_view = 'auth.unauthorized'  # type: ignore
 
 
 @login.user_loader
@@ -71,7 +71,7 @@ def api_help():
     Returns all API routes and their doc strings
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ],
+    route_list = { rule.rule: [[ method for method in (rule.methods or []) if method in acceptable_methods ],
                     app.view_functions[rule.endpoint].__doc__ ]
                     for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
     return route_list
@@ -86,7 +86,7 @@ def react_root(path):
     or index.html requests
     """
     if path == 'favicon.ico':
-        return app.send_from_directory('public', 'favicon.ico')
+        return send_from_directory('public', 'favicon.ico')
     return app.send_static_file('index.html')
 
 

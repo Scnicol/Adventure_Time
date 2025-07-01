@@ -19,7 +19,8 @@ config = context.config
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-fileConfig(config.config_file_name)
+if config.config_file_name is not None:
+    fileConfig(config.config_file_name)
 logger = logging.getLogger('alembic.env')
 
 # add your model's MetaData object here
@@ -83,7 +84,8 @@ def run_migrations_online():
         poolclass=pool.NullPool,
     )
 
-    with connectable.connect() as connection:
+    connection = connectable.connect()
+    try:
         context.configure(
             connection=connection,
             target_metadata=target_metadata,
@@ -99,6 +101,8 @@ def run_migrations_online():
             if environment == "production":
                 context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
+    finally:
+        connection.close()
 
 if context.is_offline_mode():
     run_migrations_offline()

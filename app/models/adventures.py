@@ -28,6 +28,12 @@ class Adventure(db.Model, UserMixin):
 
     userMemberships = db.relationship('AdventureMembership', back_populates='adventure', cascade='all, delete-orphan')
 
+    activities = db.relationship('Activity', foreign_keys='Activity.adventureId', back_populates='adventure', cascade='all, delete-orphan')
+
+    directionChoices = db.relationship('Direction', back_populates='adventure', cascade='all, delete-orphan')
+
+    foodChoices = db.relationship('Food', back_populates='adventure', cascade='all, delete-orphan')
+
     # Methods _________________________
 
     # TODO ask chatgpt how to query a join table to improve method below

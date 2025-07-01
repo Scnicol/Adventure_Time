@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
     friends1 = db.relationship('Friend', foreign_keys="Friend.userId1", back_populates="user1", cascade='all, delete-orphan')
     friends2 = db.relationship('Friend', foreign_keys="Friend.userId2", back_populates="user1", cascade='all, delete-orphan')
     instructions = db.relationship('Instruction', foreign_keys='Instruction.creatorId', back_populates='creator', cascade='all, delete-orphan')
+    activities = db.relationship('Activity', foreign_keys='Activity.creatorId', back_populates='creator', cascade='all, delete-orphan')
 
   # Methods _________________________
 

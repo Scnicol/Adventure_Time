@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.models import Activity
+from app.models import Activity, Adventure, db
 from .instructionProvider import InstructionsProvider
 from flask_login import login_required
 

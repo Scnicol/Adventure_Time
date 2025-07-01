@@ -10,13 +10,15 @@ class Activity(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     creatorId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    adventureId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('adventures.id')), nullable=False)
     activity = db.Column(db.String(300), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     # Relationships _____________________
 
-    adventures = db.relationship('Adventure_activities', back_populates='activities')
+    creator = db.relationship('User', foreign_keys='Activity.creatorId', back_populates='activities')
+    adventure = db.relationship('Adventure', foreign_keys='Activity.adventureId', back_populates='activities')
 
     # Methods _________________________
 

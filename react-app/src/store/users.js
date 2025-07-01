@@ -38,7 +38,6 @@ const initialState = {};
 
 // _________USERS_REDUCER_____________
 const userReducer = (state = initialState, action) => {
-    let newState = {};
 
     switch (action.type) {
         case GET_USERS:
