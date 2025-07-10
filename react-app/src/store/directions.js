@@ -49,7 +49,7 @@ export const createDirection = (direction) => async dispatch => {
         let newDirection = await response.json();
         dispatch(actiongCreateDirection(newDirection))
 
-        return newChallenge;
+        return newDirection;
     }
 }
 

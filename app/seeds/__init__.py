@@ -1,5 +1,5 @@
 from flask.cli import AppGroup
-
+from .directions import seed_directions, undo_directions
 from .adventures import seed_adventures, undo_adventures
 from .friends import seed_friends, undo_friends
 from .users import seed_users, undo_users
@@ -33,6 +33,7 @@ def seed():
     seed_instructions()
     seed_adventureInstructions()
     seed_adventureMemberships()
+    seed_directions()
 
     # Add other seed functions here
 
@@ -48,4 +49,5 @@ def undo():
     undo_instructions()
     undo_adventureInstructions()
     undo_adventureMemberships()
+    undo_directions()
     # Add other undo functions here

@@ -1,0 +1,74 @@
+.wheel-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.spinning-wheel {
+  display: block;
+  margin: 0 auto 24px auto;
+  cursor: pointer;
+  transition: transform 3.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transform: rotate(var(--rotation, 0deg));
+  border-radius: 50%;
+  background: none;
+  width: 650px;
+  height: 650px;
+  max-width: 98vw;
+  max-height: 70vh;
+}
+
+.spinning-wheel.spinning {
+  pointer-events: none;
+}
+
+.spin-btn {
+  margin-top: 18px;
+  font-size: 1.2rem;
+  font-family: 'Luckiest Guy', cursive, sans-serif;
+  background: linear-gradient(90deg, #f9d423 0%, #ff4e50 100%);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 36px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.spin-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spin-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #ff4e50 0%, #f9d423 100%);
+  transform: scale(1.05);
+}
+
+.wheel-result {
+  margin-top: 18px;
+  font-size: 1.3rem;
+  color: #fffbe7;
+  background: #ff4e50;
+  padding: 12px 32px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  letter-spacing: 1px;
+}
+
+.wheel-empty {
+  color: #fffbe7;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 120px;
+}
+
+@media (max-width: 700px) {
+  .spinning-wheel {
+    width: 320px;
+    height: 320px;
+  }
+}

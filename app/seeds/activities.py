@@ -143,6 +143,6 @@ def seed_activities_instructions():
     db.session.add(activity20)
     db.session.add(activity21)
     db.session.add(activity22)
-    db.sessions.add(activity23)
+    db.session.add(activity23)
 
     db.session.commit()

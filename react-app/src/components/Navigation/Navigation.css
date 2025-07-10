@@ -1,5 +1,96 @@
+ul {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: linear-gradient(90deg, #f9d423 0%, #ff4e50 100%);
+  padding: 16px 32px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.10);
+  margin: 0 auto 24px auto;
+  list-style: none;
+  position: relative;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+}
+
+ul li a, ul li button {
+  font-size: 1.1rem;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  color: #fff;
+  background: #ff4e50;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 20px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08);
+  text-decoration: none;
+  outline: none;
+}
+
+ul li a:hover, ul li button:hover {
+  background: #f9d423;
+  color: #ff4e50;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12);
+}
+
 .profile-dropdown {
   position: absolute;
+  top: 60px;
+  right: 0;
+  background: #fffbe7;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+  padding: 16px 0;
+  min-width: 180px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: dropdownFade 0.3s ease;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-dropdown li {
+  width: 100%;
+  padding: 8px 24px;
+  color: #ff4e50;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.profile-dropdown li:hover {
+  background: #ffe082;
+}
+
+.profile-dropdown button {
+  width: 100%;
+  background: #ff4e50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  margin-top: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.profile-dropdown button:hover {
+  background: #f9d423;
+  color: #ff4e50;
 }
 
 .hidden {
