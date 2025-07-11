@@ -1,154 +1,60 @@
-from app.models import db, Instruction, environment, SCHEMA
+from app.models import db, Food, Instruction
 from .instructionTypes import foodType
 from sqlalchemy.sql import text
 
 def makeFood(creatorId, food):
-    return Instruction(creatorId = creatorId, instructionType = foodType, instructions = food)
+    return Food(adventureId=1, food=food, creatorId=creatorId)
+
+def makeFoodInstruction(creatorId, food):
+    return Instruction(creatorId=creatorId, instructionType=foodType, instructions=food)
 
 def seed_food_instructions():
-    food1 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Mexican restaurant'
-    )
+    food_data = [
+        (1, 'Find nearest Mexican restaurant'),
+        (1, 'Find nearest Pizza restaurant'),
+        (1, 'Find nearest Hamburger restaurant'),
+        (1, 'Find nearest Chinese restaurant'),
+        (1, 'Find nearest Japanese restaurant'),
+        (1, 'Find nearest Greek restaurant'),
+        (1, 'Find nearest Italian restaurant'),
+        (1, 'Find nearest Sushi restaurant'),
+        (1, 'Find nearest Ethiopian restaurant'),
+        (1, 'Find nearest Sandwich restaurant'),
+        (2, 'Find nearest Taco restaurant'),
+        (2, 'Find nearest Dumpling restaurant'),
+        (2, 'Find nearest Salad restaurant'),
+        (2, 'Find nearest Fish restaurant'),
+        (2, 'Find nearest Michelan Star restaurant'),
+        (2, 'Find nearest Kebab restaurant'),
+        (2, 'Find nearest Barbeque restaurant'),
+        (2, 'Find nearest Mediteranian restaurant'),
+        (2, 'Find nearest Thai restaurant'),
+        (2, 'Find nearest Taquerian restaurant'),
+        (2, 'Find nearest Breakfast restaurant'),
+        (4, 'Stop at a foodie hub and everone go bring back something around 10$ then share!'),
+        (4, 'Go into store and each buy different types of food, go out and find a place to have a picnic'),
+        (4, 'Stop, get out and everyone look for a place to eat, first person to find something atleast 3 people would like chooses that place to eat'),
+    ]
 
-    food2 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Pizza restaurant'
-    )
+    food_objs = []
+    instruction_objs = []
 
-    food3 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Hamburger restaurant'
-    )
+    for creatorId, food_text in food_data:
+        food = makeFood(creatorId, food_text)
+        food_objs.append(food)
+        instruction = makeFoodInstruction(creatorId, food_text)
+        instruction_objs.append(instruction)
 
-    food4 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Chinese restaurant'
-    )
+    db.session.add_all(food_objs)
+    db.session.add_all(instruction_objs)
+    db.session.commit()
 
-    food5 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Japanese restaurant'
-    )
-
-    food6 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Greek restaurant'
-    )
-
-    food7 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Italian restaurant'
-    )
-
-    food8 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Sushi restaurant'
-    )
-
-    food9 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Ethiopian restaurant'
-    )
-
-    food10 = makeFood(
-        creatorId = 1,
-        food = 'Find nearest Sandwich restaurant'
-    )
-
-    food11 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Taco restaurant'
-    )
-
-    food12 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Dumpling restaurant'
-    )
-
-    food13 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Salad restaurant'
-    )
-
-    food14 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Fish restaurant'
-    )
-
-    food15 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Michelan Star restaurant'
-    )
-
-    food16 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Kebab restaurant'
-    )
-
-    food17 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Barbeque restaurant'
-    )
-
-    food18 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Mediteranian restaurant'
-    )
-
-    food19 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Thai restaurant'
-    )
-
-    food20 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Taquerian restaurant'
-    )
-
-    food21 = makeFood(
-        creatorId = 2,
-        food = 'Find nearest Breakfast restaurant'
-    )
-
-    food22 = makeFood(
-        creatorId = 4,
-        food = "Stop at a foodie hub and everone go bring back something around 10$ then share!"
-    )
-
-    food23 = makeFood(
-        creatorId = 4,
-        food = "Stop, get out and everyone look for a place to eat, first person to find something atleast 3 people would like chooses that place to eat"
-    )
-
-    food24 = makeFood(
-        creatorId = 4,
-        food = "Go into store and each buy different types of food, go out and find a place to have a picnic"
-    )
-
-    db.session.add(food1)
-    db.session.add(food2)
-    db.session.add(food3)
-    db.session.add(food4)
-    db.session.add(food5)
-    db.session.add(food6)
-    db.session.add(food7)
-    db.session.add(food8)
-    db.session.add(food9)
-    db.session.add(food10)
-    db.session.add(food11)
-    db.session.add(food12)
-    db.session.add(food13)
-    db.session.add(food14)
-    db.session.add(food15)
-    db.session.add(food16)
-    db.session.add(food17)
-    db.session.add(food18)
-    db.session.add(food19)
-    db.session.add(food20)
-    db.session.add(food21)
-    db.session.add(food22)
-    db.session.add(food24)
-    db.session.add(food23)
-
+def undo_food_instructions():
+    from app.models.db import environment, SCHEMA
+    if environment == "production":
+        db.session.execute(text(f"TRUNCATE table {SCHEMA}.food RESTART IDENTITY CASCADE;"))
+        db.session.execute(text(f"TRUNCATE table {SCHEMA}.instructions RESTART IDENTITY CASCADE;"))
+    else:
+        db.session.execute(text("DELETE FROM food;"))
+        db.session.execute(text("DELETE FROM instructions;"))
     db.session.commit()
