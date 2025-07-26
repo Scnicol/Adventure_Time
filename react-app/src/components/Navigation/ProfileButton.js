@@ -1,72 +1,56 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import { useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useModal } from "../../context/Modal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
+  const history = useHistory();
+  const { setModalContent, closeModal } = useModal();
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
-
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
-
-    document.addEventListener("click", closeMenu);
-
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
-
-  const handleLogout = (e) => {
+  const handleLogout = async (e) => {
     e.preventDefault();
-    dispatch(logout());
+    await dispatch(logout());
+    closeModal();
+    history.push("/");
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
-
-  return (
-    <>
-      <button className="profile-btn" onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      <ul className={ulClassName} ref={ulRef}>
+  const openProfileModal = () => {
+    setModalContent(
+      <div className="profile-modal-content">
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <div style={{ marginBottom: 12, fontWeight: 600 }}>{user.username}</div>
+            <button className="profile-btn" onClick={handleLogout} style={{ width: '100%' }}>Log Out</button>
           </>
         ) : (
           <>
             <OpenModalButton
               buttonText="Log In"
-              onItemClick={closeMenu}
+              onItemClick={closeModal}
               modalComponent={<LoginFormModal />}
+              className="profile-modal-nav-btn"
             />
-
             <OpenModalButton
               buttonText="Sign Up"
-              onItemClick={closeMenu}
+              onItemClick={closeModal}
               modalComponent={<SignupFormModal />}
+              className="profile-modal-nav-btn"
             />
           </>
         )}
-      </ul>
-    </>
+      </div>
+    );
+  };
+
+  return (
+    <button className="profile-btn" onClick={openProfileModal}>
+      <i className="fas fa-user-circle" />
+    </button>
   );
 }
 

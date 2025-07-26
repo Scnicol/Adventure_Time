@@ -22,12 +22,10 @@ function Navigation({ isLoaded }){
 			<div className="nav-right">
 				<ul>
 					{sessionUser && (
-						<li>
-							<NavLink to="/my-adventures">My Adventures</NavLink>
-						</li>
-					)}
-					{isLoaded && (
 						<>
+							<li>
+								<NavLink to="/my-adventures">My Adventures</NavLink>
+							</li>
 							<li>
 								<NavLink to="/activities">Activities</NavLink>
 							</li>
