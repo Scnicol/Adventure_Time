@@ -69,6 +69,7 @@ class Adventure(db.Model, UserMixin):
         return {
             'id': self.id,
             'creatorId': self.creatorId,
+            'creatorUsername': self.creator.username if self.creator else None,
             'name': self.name,
             'description': self.description,
             'adventureDate': self.adventureDate,

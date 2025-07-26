@@ -19,7 +19,10 @@ def get_all_adventures():
 @login_required
 def get_user_adventures():
     currentUserId = current_user.get_id()
+    print('DEBUG currentUserId:', currentUserId)
     user = User.query.get(currentUserId)
+    print('DEBUG user:', user)
+    print('DEBUG user.adventures:', user.adventures if user else None)
 
     if user is None:
         return {'error': 'User not found'}, 401
@@ -114,3 +117,23 @@ def delete_adventure(adventureId):
     db.session.delete(adventure)
     db.session.commit()
     return {'message': 'Adventure successfully deleted'}
+
+#Get all adventures the current user has joined (not created)
+@adventure_routes.route('/user/current/joined', methods=['GET'])
+@login_required
+def get_user_joined_adventures():
+    currentUserId = current_user.get_id()
+    user = User.query.get(currentUserId)
+
+    if user is None:
+        return {'error': 'User not found'}, 401
+
+    # Adventures where user is a member (status accepted) but not the creator
+    joined_adventures = []
+    for membership in user.adventureMemberships:
+        if membership.status == 'accepted':
+            adventure = membership.adventure
+            if adventure.creatorId != int(currentUserId):
+                joined_adventures.append(adventure.to_dict_full())
+
+    return {'adventures': joined_adventures}
