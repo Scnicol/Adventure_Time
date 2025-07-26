@@ -1,19 +1,33 @@
-ul {
+.nav-bar-flex {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
   background: #273449;
   padding: 12px 28px;
   border-radius: 14px;
   box-shadow: 0 2px 8px 0 rgba(31, 38, 135, 0.14);
   margin: 0 auto 24px auto;
-  list-style: none;
-  position: relative;
 }
 
-ul li {
+.nav-left ul,
+.nav-right ul {
   display: flex;
   align-items: center;
+  gap: 24px;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  list-style: none;
+}
+
+.nav-left ul {
+  margin-right: 12px;
+}
+
+.nav-right ul {
+  margin-left: 12px;
 }
 
 ul li a, ul li button {
@@ -122,4 +136,8 @@ ul li a:hover, ul li button:hover {
 
 .hidden {
   display: none;
+}
+
+.profile-dropdown.hidden {
+  display: none !important;
 }
