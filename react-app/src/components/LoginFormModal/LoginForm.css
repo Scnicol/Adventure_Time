@@ -1,0 +1,74 @@
+.login-modal-container {
+  background: #273449;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.18);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  min-width: 300px;
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-modal-container h1 {
+  color: #f1f5f9;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+}
+
+.login-modal-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.login-modal-container label {
+  color: #f1f5f9;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-modal-container input {
+  border-radius: 8px;
+  border: 1px solid #3b82f6;
+  padding: 8px 12px;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+.login-modal-container input:focus {
+  outline: 2px solid #3b82f6;
+  background: #273449;
+}
+
+.login-modal-container button[type="submit"] {
+  background: #3b82f6;
+  color: #f1f5f9;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  padding: 10px 0;
+  margin-top: 0.5rem;
+  transition: background 0.18s, color 0.18s;
+  cursor: pointer;
+}
+
+.login-modal-container button[type="submit"]:hover {
+  background: #2563eb;
+  color: #f1f5f9;
+}
+
+.login-modal-container ul {
+  color: #ffb4b4;
+  margin-bottom: 1rem;
+  padding-left: 1.2rem;
+}

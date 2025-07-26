@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import MyAdventuresPage from "./components/MyAdventuresPage/MyAdventuresPage";
 import AdventureDetailPage from "./components/AdventureDetailPage";
+import ActivitiesPage from "./components/ActivitiesPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route path="/adventures/:adventureId">
             <AdventureDetailPage />
+          </Route>
+          <Route path="/activities">
+            <ActivitiesPage />
           </Route>
         </Switch>
       )}
