@@ -1,3 +1,5 @@
+import { buildApiUrl } from '../config/api';
+
 // ______ACTION_TYPES____________
 const GET_FOOD = 'food/GET_FOOD'
 const GET_FOOD_BY_ID = 'food/GET_FOOD_BY_ID'
@@ -17,7 +19,7 @@ const actionGetFoodById = (food) => ({
 
 // --------THUNK_ACTIONS____________
 export const getFood = () => async dispatch => {
-    const response = await fetch(`/api/food`);
+    const response = await fetch(buildApiUrl(`/api/food`));
 
     if (response.ok) {
         const data = await response.json();
@@ -26,7 +28,7 @@ export const getFood = () => async dispatch => {
 }
 
 export const getFoodById = (foodId) => async dispatch => {
-    const response = await fetch(`/api/food/${foodId}`)
+    const response = await fetch(buildApiUrl(`/api/food/${foodId}`))
 
     if (response.ok) {
         const food = await response.json();

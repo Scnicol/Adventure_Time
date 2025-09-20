@@ -1,7 +1,7 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from app.models import Food
 from .instructionProvider import InstructionsProvider
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 food_routes = Blueprint('food', __name__)
 provider = InstructionsProvider(Food, 'food', 'food')
@@ -15,6 +15,14 @@ def get_all_food():
 @food_routes.route('/<int:foodId>', methods=['GET'])
 def get_food_by_id(foodId):
     return provider.get_by_id(foodId)
+
+# New route: Get all food created by the current user
+@food_routes.route('/user/current', methods=['GET'])
+@login_required
+def get_user_food():
+    user_id = current_user.get_id()
+    food_items = Food.query.filter_by(creatorId=user_id).all()
+    return jsonify({'food': [food.to_dict() for food in food_items]})
 
 #POST create food
 @food_routes.route('', methods=['POST'])

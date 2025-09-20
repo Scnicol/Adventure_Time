@@ -1,3 +1,5 @@
+import { buildApiUrl } from '../config/api';
+
 // ___________ACTION_TYPES___________________
 const GET_ADVENTURES = 'adventures/GET_ADVENTURES'
 const GET_ADVENTURE_BY_ID = 'adventures/GET_ADVENTURE_BY_ID'
@@ -21,7 +23,7 @@ const actionCreateAdventure = (adventure) => ({
 
 //______THUNK_ACTIONS____________
 export const getAdventures = () => async dispatch => {
-    const response = await fetch(`/api/adventures`);
+    const response = await fetch(buildApiUrl(`/api/adventures`));
 
     if (response.ok) {
         const data = await response.json();
@@ -30,7 +32,7 @@ export const getAdventures = () => async dispatch => {
 }
 
 export const getAdventureById = (adventureId) => async dispatch => {
-    const response = await fetch(`/api/adventures/${adventureId}`)
+    const response = await fetch(buildApiUrl(`/api/adventures/${adventureId}`))
 
     if (response.ok) {
         const adventure = await response.json();
@@ -39,7 +41,7 @@ export const getAdventureById = (adventureId) => async dispatch => {
 }
 
 export const createAdventure = (adventure) => async disptach => {
-    const response = await fetch(`/api/adventures`,
+    const response = await fetch(buildApiUrl(`/api/adventures`),
         {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},

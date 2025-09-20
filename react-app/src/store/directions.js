@@ -1,3 +1,5 @@
+import { buildApiUrl } from '../config/api';
+
 // __________ACTION_TYPES_____________
 const GET_DIRECTIONS = 'directions/GET_DIRECTIONS'
 const GET_DIRECTION_BY_ID = 'directions/GET_DIRECTION_BY_ID'
@@ -21,7 +23,7 @@ const actiongCreateDirection = (direction) => ({
 
 //______THUNK_ACTIONS________________
 export const getDirections = () => async dispatch => {
-    const response = await fetch(`api/directions`);
+    const response = await fetch(buildApiUrl(`/api/directions`));
 
     if (response.ok) {
         const data = await response.json();
@@ -30,7 +32,7 @@ export const getDirections = () => async dispatch => {
 }
 
 export const getDirectionById = (directionId) => async dispatch => {
-    const response = await fetch(`/api/challenges/${directionId}`)
+    const response = await fetch(buildApiUrl(`/api/directions/${directionId}`))
 
     if (response.ok) {
         const direction = await response.json();
@@ -39,7 +41,7 @@ export const getDirectionById = (directionId) => async dispatch => {
 }
 
 export const createDirection = (direction) => async dispatch => {
-    const response = await fetch(`api/directions`, {
+    const response = await fetch(buildApiUrl(`/api/directions`), {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(direction)

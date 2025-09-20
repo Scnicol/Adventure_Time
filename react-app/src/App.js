@@ -8,13 +8,15 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import MyAdventuresPage from "./components/MyAdventuresPage/MyAdventuresPage";
 import AdventureDetailPage from "./components/AdventureDetailPage";
-import ActivitiesPage from "./components/ActivitiesPage";
+import ActivitiesPage from "./components/ActivitiesPage/ActivitiesPage";
+import FoodPage from "./components/FoodPage/FoodPage";
+import { buildApiUrl } from "./config/api";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    fetch("/api/csrf/restore", { credentials: "include" });
+    fetch(buildApiUrl("/api/csrf/restore"), { credentials: "include" });
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -40,6 +42,9 @@ function App() {
           </Route>
           <Route path="/activities">
             <ActivitiesPage />
+          </Route>
+          <Route path="/food">
+            <FoodPage />
           </Route>
         </Switch>
       )}

@@ -1,3 +1,5 @@
+import { buildApiUrl } from '../config/api';
+
 // ______ACTION_TYPES____________
 const GET_USERS = 'users/GET_USERS'
 const GET_USER_BY_ID = 'users/GET_USER_BY_ID'
@@ -16,7 +18,7 @@ const actionGetUserById = (user) => ({
 
 // _______THUNK_ACTIONS_________
 export const getUsers = () => async dispatch => {
-    const response = await fetch(`/api/users`);
+    const response = await fetch(buildApiUrl(`/api/users`));
 
     if (response.ok) {
         const data = await response.json();
@@ -25,7 +27,7 @@ export const getUsers = () => async dispatch => {
 }
 
 export const getUserById = (userId) => async dispatch => {
-    const response = await fetch(`/api/users/${userId}`)
+    const response = await fetch(buildApiUrl(`/api/users/${userId}`))
 
     if (response.ok) {
         const user = await response.json();
